@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expo Orgullosamente Misionero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/evento.css">
+  <link rel="stylesheet" href="css/objetivos.css">
+  <link rel="stylesheet" href="css/navbar.css">
+</head>
+
+<body>
+  <!-- Overlay para cerrar menú en móvil -->
+  <div class="nav-overlay"></div>
+
+  <!-- Contenedores donde se cargará cada sección -->
+  <div id="seccion-navbar"></div>
+  <div id="seccion-evento"></div>
+  <div id="seccion-objetivos"></div>
+  
+  <script>
+    // Función mejorada para cargar HTML y ejecutar scripts
+    function cargarHTML(url, contenedorID, callback) {
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          const contenedor = document.getElementById(contenedorID);
+          contenedor.innerHTML = html;
+          
+          // Ejecutar scripts dentro del HTML cargado
+          const scripts = contenedor.querySelectorAll('script');
+          scripts.forEach(script => {
+            const newScript = document.createElement('script');
+            if (script.src) {
+              newScript.src = script.src;
+            } else {
+              newScript.textContent = script.textContent;
+            }
+            document.body.appendChild(newScript);
+            script.remove(); // Remover el script original
+          });
+          
+          // Ejecutar callback si existe
+          if (callback) callback();
+        })
+        .catch(err => console.error('Error cargando HTML:', err));
+    }
+
+    // Función para inicializar el menú hamburguesa
+    function inicializarMenuHamburguesa() {
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      const overlay = document.querySelector('.nav-overlay');
+
+      if (!hamburger || !navLinks || !overlay) return;
+
+      function toggleMenu() {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        overlay.classList.toggle('active');
+        
+        // Prevenir scroll del body cuando el menú está abierto
+        if (navLinks.classList.contains('active')) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      }
+
+      function closeMenu() {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      // Event listeners
+      hamburger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', closeMenu);
+
+      // Cerrar menú al hacer click en un enlace
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Cerrar menú con la tecla Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeMenu();
+        }
+      });
+
+      // Cerrar menú al cambiar el tamaño de ventana
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+          closeMenu();
+        }
+      });
+    }
+
+    // Cargar archivos separados
+    cargarHTML('carga/navbar.html', 'seccion-navbar', inicializarMenuHamburguesa);
+    cargarHTML('carga/evento.html', 'seccion-evento');
+    cargarHTML('carga/objetivos.html', 'seccion-objetivos');
+  </script>
+
+</body>
+
+</html>

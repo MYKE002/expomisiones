@@ -1,0 +1,107 @@
+.contenedor-objetivos-padre {
+    background: #fbeedc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor-objetivos-hijo {
+    margin-top: 80px;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.contenedor-objetivos-padre h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #813014;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.contenedor-objetivos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+}
+
+.objetivo {
+    margin: 0;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.objetivo-contenido {
+    flex: 1;
+    padding: 20px 30px 20px 20px;
+    text-align: left;
+}
+
+.objetivo-contenido h2 {
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+    color: #813014;
+}
+
+.objetivo-contenido p {
+    font-size: 0.9rem;
+    color: #813014;
+    line-height: 1.5;
+}
+
+.numero-container {
+    position: absolute;
+    top: 0;
+    left: -35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.numero-container h1 {
+    font-size: 3.5rem;
+    color: #c65617;
+    margin: 0;
+}
+
+.contenedor-objetivos-hijo-imagen {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.contenedor-objetivos-hijo-imagen img {
+    width: 60%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* --- Responsive objetivos --- */
+@media (max-width: 768px) {
+    .contenedor-objetivos {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contenedor-objetivos-hijo {
+        padding: 0 15px;
+    }
+
+    .numero-container {
+        left: -20px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .numero-container h1 {
+        font-size: 2rem;
+    }
+
+    .objetivo {
+        width: 100%;
+    }
+}

@@ -1,0 +1,197 @@
+/* ===== Nav Principal ===== */
+nav {
+    width: 100%;
+    background-color: #cfac7d;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: relative;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+.logo a {
+    color: #fbeedc;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+}
+
+.nav-links li a {
+    color: #fbeedc;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.nav-links li a:hover {
+    color: #f1d488;
+    background-color: rgba(241, 212, 136, 0.1);
+}
+
+/* Botón hamburguesa mejorado */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.hamburger:hover {
+    background-color: rgba(251, 238, 220, 0.1);
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #fbeedc;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* Animación del hamburger cuando está activo */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Overlay para cerrar el menú */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.nav-overlay.active {
+    display: block;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+    .logo img {
+        height: 35px;
+    }
+
+    /* Mostrar botón hamburguesa */
+    .hamburger {
+        display: flex;
+        z-index: 1001;
+    }
+
+    /* Menú móvil mejorado */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: #cfac7d;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        border-top: 2px solid rgba(251, 238, 220, 0.3);
+        animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nav-links li {
+        margin: 0;
+        border-bottom: 1px solid rgba(251, 238, 220, 0.2);
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 15px 20px;
+        color: #fbeedc;
+        text-align: center;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        border-radius: 0;
+    }
+
+    .nav-links li a:hover {
+        background-color: rgba(251, 238, 220, 0.15);
+        color: #f1d488;
+        transform: translateX(5px);
+    }
+
+    /* Mostrar menú cuando está activo */
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 12px 15px;
+    }
+
+    .logo img {
+        height: 30px;
+    }
+
+    .nav-links li a {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+}

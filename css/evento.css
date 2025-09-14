@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.contenedor-evento {
+    background-color: #f1d488;
+}
+
+.contenedor-padre {
+    padding: 20px;
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.contenedor-hijo-texto {
+    margin-top: 50px;
+    flex: 1;
+    padding: 20px;
+}
+
+.contenedor-hijo-texto h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #813014;
+    font-weight: bold;
+}
+
+.contenedor-hijo-texto>p {
+    font-size: 1.3rem;
+    color: #813014;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.contenedor-padre-evento {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Eventos */
+.contenedor-hijo-evento-jornada,
+.contenedor-hijo-evento-festival {
+    border-radius: 15px;
+    padding: 25px 25px 25px 60px;
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.contenedor-hijo-evento-jornada {
+    background-color: #c65617;
+}
+
+.contenedor-hijo-evento-jornada .contenedor-hijo-evento-texto {
+    color: #f1d488;
+}
+
+.contenedor-hijo-evento-festival {
+    background-color: #813014;
+}
+
+.contenedor-hijo-evento-festival .contenedor-hijo-evento-texto {
+    color: #f1d488;
+}
+
+/* Iconos circulares */
+.contenedor-hijo-evento-jornada .contenedor-hijo-evento-imagen,
+.contenedor-hijo-evento-festival .contenedor-hijo-evento-imagen {
+    position: absolute;
+    left: -70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.contenedor-hijo-evento-imagen img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.contenedor-hijo-evento-texto h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.contenedor-hijo-evento-texto small {
+    font-size: 14px;
+    opacity: 0.9;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.contenedor-hijo-evento-texto p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    opacity: 0.95;
+}
+
+/* Columna de imagen */
+.contenedor-hijo-imagen {
+    margin-top: 40px;
+    flex: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor-hijo-imagen img {
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    display: block;
+}
+
+/* --- Responsive evento --- */
+@media (max-width: 768px) {
+    .contenedor-padre {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .contenedor-hijo-evento-festival .contenedor-hijo-evento-imagen,
+    .contenedor-hijo-evento-jornada .contenedor-hijo-evento-imagen {
+        left: -15px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .contenedor-hijo-evento-imagen img {
+        width: 70%;
+        height: auto;
+    }
+
+    .contenedor-hijo-imagen {
+        display: none;
+    }
+
+    .contenedor-evento {
+        background: linear-gradient(rgba(241, 212, 136, 0.95),
+                rgba(241, 212, 136, 0.95)),
+            url("caballo.svg") no-repeat center top;
+        background-attachment: fixed;
+        padding: 20px 10px;
+    }
+
+    .contenedor-hijo-texto h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .contenedor-hijo-evento-jornada,
+    .contenedor-hijo-evento-festival {
+        width: 95%;
+        padding: 15px 15px 15px 50px;
+        margin: 0 auto;
+    }
+
+    .contenedor-hijo-evento-texto p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
